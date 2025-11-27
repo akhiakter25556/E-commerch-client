@@ -4,11 +4,11 @@ import { useState } from "react";
 
 const products = [
   { id: 1, title: "Classic Watch", desc: "Premium quality watch", price: "$21", img: "https://i.ibb.co/W4Qftq5c/0b0253b7388244626e3c135f876da6d4.jpg" },
-  { id: 2, title: "Smart Watch", desc: "Advanced smart watch", price: "$35", img: "https://i.ibb.co/HLQ8syzH/photo-1615554754180-20118f604097.jpg" },
-  { id: 3, title: "Leather Bag", desc: "Stylish leather bag", price: "$60", img: "https://i.ibb.co/qR0vXYF/photo-1542831371-d531d36971e6.jpg" },
-  { id: 4, title: "Running Shoes", desc: "Comfortable running shoes", price: "$40", img: "https://i.ibb.co/0FjdDFd/photo-1552346154-d7d0deeddb06.jpg" },
-  { id: 5, title: "Headphones", desc: "Noise-cancelling headphones", price: "$80", img: "https://i.ibb.co/6bqZ0xB/photo-1517059224940-d4af9eec41e5.jpg" },
-  { id: 6, title: "Sunglasses", desc: "Trendy sunglasses", price: "$30", img: "https://i.ibb.co/y0z9JGy/photo-1483985988355-763728e1935b.jpg" },
+  { id: 2, title: "Smart Watch", desc: "Advanced smart watch", price: "$35", img: "https://i.ibb.co/tTF4P9wZ/e74783ec-b191-4904-9c68-a4b2819f6081-Destiny-Cameron-01-Getting-Ready-21.jpg" },
+  { id: 3, title: "Leather Watch", desc: "Stylish leather bag", price: "$60", img: "https://i.ibb.co/7J68ZKjj/a7ba0bb3-2b36-43bc-9cd0-bff54860ac3a.webp" },
+  { id: 4, title: "Running Shoes", desc: "Comfortable running shoes", price: "$40", img: "https://i.ibb.co/5qFB4nb/download-1.jpg" },
+  { id: 5, title: " Shoes", desc: "Noise-cancelling headphones", price: "$80", img: "https://i.ibb.co/Kpbph9kc/download.jpg" },
+  { id: 6, title: "Sunglasses Shoes", desc: "Trendy sunglasses", price: "$30", img: "https://i.ibb.co/5qFB4nb/download-1.jpg" },
 ];
 
 export default function ItemListPage() {

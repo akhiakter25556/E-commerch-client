@@ -55,7 +55,7 @@ export default function Products() {
         ))}
       </div>
 
-      {/* Gallery Section */}
+ 
       <GallerySection />
     </div>
   );

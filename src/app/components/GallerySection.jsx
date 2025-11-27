@@ -15,7 +15,10 @@ export default function GallerySection() {
   return (
     <section className="py-16 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto text-center mb-12">
-      
+    <h1 className="text-3xl font-bold text-purple-700 mb-6 flex justify-center">My Gallery</h1>
+      <p className="text-gray-700 mb-8 flex justify-center">
+        Welcome to your gallery. Here you can see some of our premium cars and products.
+      </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

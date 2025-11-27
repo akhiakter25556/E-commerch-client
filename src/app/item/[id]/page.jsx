@@ -4,16 +4,16 @@ import Link from "next/link";
 // Dummy Data
 const items = [
   { id: 1, title: "Classic Watch", desc: "Full desc...", price: "$21", img: 
-    "https://i.ibb.co/W4Qftq5c/0b0253b7388244626e3c135f876da6d4.jpg", 
+    "https://i.ibb.co/vCGZQf1F/premium-photo-1712764121254-d9867c694b81.jpg", 
     date: "2025-01-12", priority: "High" },
   { id: 2, title: "Smart Watch", desc: "Full desc...", price: "$35",
-     img: "https://i.ibb.co/HLQ8syzH/photo-1615554754180-20118f604097.jpg",
+     img: "https://i.ibb.co/tTF4P9wZ/e74783ec-b191-4904-9c68-a4b2819f6081-Destiny-Cameron-01-Getting-Ready-21.jpg",
       date: "2025-02-03", priority: "Medium" },
   { id: 3, title: "Pro Watch", desc: "Full desc...", price: "$49", img:
      "https://i.ibb.co/HLQ8syzH/photo-1615554754180-20118f604097.jpg", date:
       "2025-04-10", priority: "Low" },
   { id: 4, title: "Digital Watch", desc: "Full desc...", price: "$89", 
-    img: "https://i.ibb.co/HLQ8syzH/photo-1615554754180-20118f604097.jpg",
+    img: "https://i.ibb.co/21p5tM3P/51-VPRhr-Ifc-L.jpg",
      date: "2025-05-02", priority: "High" },
 ];
 
@@ -47,7 +47,8 @@ export default async function ItemDetails({ params }) {
   <h2 className="text-3xl md:text-4xl font-bold text-purple-700 mb-4">Featured Car</h2>
   
   <p className="text-gray-700 mb-4">
-    This is a premium quality car with advanced features and excellent performance.
+    This is a premium quality car with advanced features 
+    and excellent performance.
   </p>
   
   <p className="text-gray-600 mb-6">
