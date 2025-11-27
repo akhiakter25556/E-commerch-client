@@ -90,8 +90,10 @@ export default function LandingPage() {
   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30"></div>
 
   {/* Decorative Floating Blurs */}
-  <div className="absolute top-10 left-10 w-40 h-40 bg-purple-500 opacity-20 blur-3xl rounded-full animate-pulse"></div>
-  <div className="absolute bottom-10 right-10 w-56 h-56 bg-purple-900 opacity-20 blur-3xl rounded-full animate-ping"></div>
+  <div className="absolute top-10 left-10 w-40 h-40 bg-purple-500 opacity-20 
+  blur-3xl rounded-full animate-pulse"></div>
+  <div className="absolute bottom-10 right-10 w-56 h-56 bg-purple-900 opacity-20 
+  blur-3xl rounded-full animate-ping"></div>
 
   {/* Main Content */}
   <div className="relative z-10 max-w-2xl mx-auto text-center">
