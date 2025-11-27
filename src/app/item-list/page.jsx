@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,11 +49,14 @@ export default function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"
+              className="w-full p-3 border rounded-lg focus:outline-none
+               focus:ring-2 focus:ring-purple-700"
             />
             <button
               type="submit"
-              className="w-full py-3 bg-purple-700 text-white rounded-lg font-semibold hover:bg-purple-800 transition"
+              className="w-full py-3 bg-purple-700
+               text-white rounded-lg font-semibold
+                hover:bg-purple-800 transition"
             >
               Login
             </button>
@@ -66,7 +70,8 @@ export default function LoginPage() {
             </button>
           </form>
           <p className="text-center text-gray-500 text-sm mt-4">
-            Don't have an account? <a href="/register" className="text-purple-700 font-semibold">Sign Up</a>
+            Don't have an account? <a href="/register" 
+            className="text-purple-700 font-semibold">Sign Up</a>
           </p>
         </div>
       </div>
