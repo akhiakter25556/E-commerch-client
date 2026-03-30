@@ -2,11 +2,19 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const { data: session, status } = useSession();
+  const isLoggedIn = Boolean(session);
+
+  const closeDropdown = () => setOpenDropdown(false);
+  const closeAll = () => {
+    setOpenMenu(false);
+    setOpenDropdown(false);
+  };
 
   return (
     <nav className="sticky top-0 bg-white shadow-md z-50">
@@ -43,62 +51,52 @@ export default function Navbar() {
 
         {/* Desktop Auth + Dropdown */}
         <div className="hidden md:flex items-center gap-4 relative">
-
-          <Link
-            href="/login"
+          <button
+            onClick={() => setOpenDropdown(!openDropdown)}
             className="px-5 py-2.5 bg-gradient-to-r from-purple-700 to-black text-white 
-              rounded-xl font-semibold shadow-md hover:scale-105 transition"
+                      rounded-xl font-semibold shadow-md hover:scale-105 transition"
           >
-            Login
-          </Link>
+            {isLoggedIn ? session.user?.name || "Account" : "Login"}
+          </button>
 
-          <Link
-            href="/register"
-            className="px-5 py-2.5 bg-gradient-to-r from-purple-700 to-black text-white 
-              rounded-xl font-semibold shadow-md hover:scale-105 transition"
-          >
-            Register
-          </Link>
-
-          {/* My Account Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setOpenDropdown(!openDropdown)}
-              className="px-5 py-2.5 bg-gradient-to-r from-purple-700
-                        to-black text-white 
-                        rounded-xl font-semibold shadow-md hover:scale-105 transition"
-            >
-              My Account
-            </button>
-
-            {openDropdown && (
-              <div className="absolute right-0 mt-2 w-44
-                              bg-white shadow-lg rounded-lg border overflow-hidden z-50">
-                <Link
-                  href="/profile"
-                  className="block px-4 py-2 hover:bg-purple-100"
-                >
-                  Profile
-                </Link>
-
-                <Link
-                  href="/products"
-                  className="block px-4 py-2 hover:bg-purple-100"
-                >
-                  Add Product
-                </Link>
-
-            
-
-                <button
-                  onClick={() => signOut({ callbackUrl: "/login" })}
-                  className="block px-4 py-2 w-full text-left hover:bg-purple-100"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
+          {openDropdown && (
+            <div className="absolute right-0 mt-2 w-52 bg-white shadow-lg rounded-lg border overflow-hidden z-50">
+              {isLoggedIn ? (
+                <>
+                  <Link href="/profile" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    Dashboard
+                  </Link>
+                  <Link href="/register" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    Register
+                  </Link>
+                  <Link href="/profile" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    My Account
+                  </Link>
+                  <button
+                    onClick={() => {
+                      signOut({ callbackUrl: "/login" });
+                      closeDropdown();
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-purple-100"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    Login
+                  </Link>
+                  <Link href="/register" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    Register
+                  </Link>
+                  <Link href="/profile" onClick={closeDropdown} className="block px-4 py-2 hover:bg-purple-100">
+                    My Account
+                  </Link>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -114,49 +112,41 @@ export default function Navbar() {
 
           <hr />
 
-          <Link
-            href="/login"
+          <button
+            onClick={() => setOpenDropdown(!openDropdown)}
             className="block w-full text-center px-5 py-2.5 bg-gradient-to-r
-                      from-purple-700 to-black text-white 
+                      from-purple-700 to-black text-white
                       rounded-xl font-semibold shadow-md hover:scale-105 transition"
           >
-            Login
-          </Link>
+            {isLoggedIn ? session.user?.name || "Account" : "Login"}
+          </button>
 
-          <Link
-            href="/register"
-            className="block w-full text-center px-5 py-2.5 bg-gradient-to-r
-                      from-purple-700 to-black text-white 
-                      rounded-xl font-semibold shadow-md hover:scale-105 transition"
-          >
-            Register
-          </Link>
-
-          {/* Mobile Account Menu */}
-          <div className="relative">
-            <button
-              onClick={() => setOpenDropdown(!openDropdown)}
-              className="block w-full text-center px-5 py-2.5 bg-gradient-to-r
-                        from-purple-700 to-black text-white
-                        rounded-xl font-semibold shadow-md hover:scale-105 transition"
-            >
-              My Account
-            </button>
-
-            {openDropdown && (
-              <div className="bg-white border rounded-lg shadow p-4 space-y-2 mt-2">
-                <Link href="/profile" className="block px-2 py-1 hover:bg-purple-100 rounded">Profile</Link>
-                <Link href="/products" className="block px-2 py-1 hover:bg-purple-100 rounded">Add Product</Link>
-                <Link href="/manage-products" className="block px-2 py-1 hover:bg-purple-100 rounded">Manage Products</Link>
-                <button
-                  onClick={() => signOut({ callbackUrl: "/login" })}
-                  className="block w-full text-left px-2 py-1 hover:bg-purple-100 rounded"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
+          {openDropdown && (
+            <div className="bg-white border rounded-lg shadow p-4 space-y-2 mt-2">
+              {isLoggedIn ? (
+                <>
+                  <Link href="/profile" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">Dashboard</Link>
+                  <Link href="/register" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">Register</Link>
+                  <Link href="/profile" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">My Account</Link>
+                  <button
+                    onClick={() => {
+                      signOut({ callbackUrl: "/login" });
+                      closeAll();
+                    }}
+                    className="block w-full text-left px-2 py-1 hover:bg-purple-100 rounded"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">Login</Link>
+                  <Link href="/register" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">Register</Link>
+                  <Link href="/profile" onClick={closeAll} className="block px-2 py-1 hover:bg-purple-100 rounded">My Account</Link>
+                </>
+              )}
+            </div>
+          )}
         </div>
       )}
     </nav>
